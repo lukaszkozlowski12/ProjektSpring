@@ -14,8 +14,10 @@ Welcome panel <br/>
 ![image](https://user-images.githubusercontent.com/72441583/151999688-3f5befa0-f81d-40e1-8494-31be6c3e3a36.png)
 
 <br/>
+
 Tasks panel <br/>
 ![image](https://user-images.githubusercontent.com/72441583/151999845-d3d52068-984d-444d-ba87-0c558fc8ceee.png)
+
 <br/>
 
 Create task <br/>
