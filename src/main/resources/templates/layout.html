@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <head th:fragment="head">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Spring login application - Politechnika Lubelska</title>
+       
+        
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+            .footer {
+                position: absolute !important; bottom: 0px; left: 1px; height: 50px;width: 100% !important;
+            }
+            .nav > li {
+                display: inline;
+                background: limegreen;
+            }
+            a { text-decoration: none; }
+            th,td {border: solid 2px black;padding: 5px;}
+             input.error { background-color: pink;
+             color:red;}
+             span{color: red;}
+             
+             footer.klasa{   background-color: rgba(0,0,0,.98);
+                            
+             }
+            
+     
+          
+     body, html { height: auto !important;
+     width:100% !important;
+     }
+             div.bg{
+      background-image: url("https://i.imgur.com/fu3Rgc7.jpg");
+       
+
+  /* Half height */
+  height: auto;
+  min-height: 48vw;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+               margin-bottom:auto;
+                  padding-bottom: 105px;
+             }
+             
+             
+ .navbar.bg-dark {
+    background-color: rgba(0,0,0,.5) !important;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.jumbotron {
+    background-color: rgba(0,0,0,.5) !important;
+    color: white;
+    padding: 41px;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+             
+  .mask-custom {
+  background: rgba(24, 24, 16, .2);
+  border-radius: 2em;
+  backdrop-filter: blur(25px);
+  border: 2px solid rgba(255, 255, 255, 0.05);
+  background-clip: padding-box;
+  box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+  width: 85%;
+}  
+
+table td,
+table th {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.button-33 {
+  background-color: #c2fbd7;
+  border-radius: 100px;
+  box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+  color: green;
+  cursor: pointer;
+  display: inline-block;
+  font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-33:hover {
+  box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
+}
+
+
+
+.button-64 {
+   float: right;
+  align-items: center;
+  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 15px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 80%;
+  min-width: 100px;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.button-64:active,
+.button-64:hover {
+  outline: 0;
+}
+
+.button-64 span {
+  background-color: rgb(5, 6, 45);
+  padding: 14px 22px;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+}
+
+.button-64:hover span {
+  background: none;
+}
+
+@media (min-width: 768px) {
+  .button-64 {
+    font-size: 21px;
+    min-width: 196px;
+  }
+}
+</style>
+<!-- url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(11).webp"); -->
+
+    </head>
+    <body>
+        <div th:fragment="navigationPanel" >
+ 
+            
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+   
+    
+  <a class="navbar-brand" href="#">PracownikApp</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>     
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item"  sec:authorize="!isAuthenticated()"  >
+        <a class="nav-link" th:href="@{/register}">Zarejestruj się </a>
+      </li>
+      <li class="nav-item active" sec:authorize="!isAuthenticated()">
+        <a class="nav-link" th:href="@{/login}">Zaloguj się</a>
+      </li>
+      <li class="nav-item" sec:authorize="isAuthenticated()">
+        <a class="nav-link" th:href="@{/profile}">Wyświetl swoje konto</a>
+      </li>
+        <li class="nav-item" sec:authorize="isAuthenticated()"  th:each="authority: ${#authentication.getAuthorities()}"  th:if="${authority.getAuthority().equals('adminUser')}" >
+        <a class="nav-link" th:href="@{/users}">Wyświetl użytkowników</a>
+      </li> 
+          <li class="nav-item" sec:authorize="isAuthenticated()"  th:each="authority: ${#authentication.getAuthorities()}"  th:if="${authority.getAuthority().equals('adminUser')}" >
+        <a class="nav-link" th:href="@{/zadaniaAll}">Wyświetl wszystkie zadania</a>
+      </li> 
+        <li class="nav-item" sec:authorize="isAuthenticated()"   th:each="authority: ${#authentication.getAuthorities()}"  th:if="${authority.getAuthority().equals('normalUser')}"  >
+        <a class="nav-link" th:href="@{/zadaniaByLogin}">Zadania</a>
+      </li>
+       <li class="nav-item" sec:authorize="isAuthenticated()">
+        <a class="nav-link" th:href="@{/edit}">Edycja konta</a>
+      </li>
+        <li class="nav-item" sec:authorize="isAuthenticated()">
+        <a class="nav-link" th:href="@{/delete}">Usun konto</a>
+      </li>
+      
+      <li class="nav-item" sec:authorize="isAuthenticated()">
+        <a class="nav-link" th:href="@{/logout}">Wyloguj się</a>
+      </li>
+      
+     
+      
+      
+      
+      
+    </ul>
+  </div>
+     
+</nav>
+        </div>
+        
+        <br>
+        <div th:fragment="footer">
+          <footer class="klasa">
+ 
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2022 Copyright:
+    <a class="text-white" href="#">lukasz.kozlowski@pollub.edu.pl</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+        </div>
+        
+        
+        
+    </body>
+</html>

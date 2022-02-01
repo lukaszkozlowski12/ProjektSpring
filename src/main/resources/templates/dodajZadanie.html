@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang= "pl" xmlns:th="http://www.thymeleaf.org">
+    <head th:include="layout :: head">
+        
+    </head>
+    <body>
+          <div class="bg">
+        <div th:include="layout :: navigationPanel"></div>
+ <div class="jumbotron">
+        <h1>Edycja </h1>
+
+       
+        <form th:action="@{/addZadanieView}" method="POST" th:object="${zadania}">
+ 
+      
+            <table class="table table-hover table-dark">
+              
+                <tr>   <td>Właściciel zadania</td>
+          <td>  <input  th:errorClass="error"  type="text"  th:field="*{login}"  name="login"  readonly /></td> 
+         
+            
+            </tr> 
+           <tr> <td>Nazwa zadania</td>
+          <td>  <input  th:errorClass="error"  type="text"  th:field="*{nazwa_zadania}" name="nazwa_zadania" placeholder="Nazwa zadania"/></td>
+            <td>  <span class="error" th:if="${#fields.hasErrors('nazwa_zadania')}" th:errors="*{nazwa_zadania}"></span></td>
+            
+             </tr> 
+           <tr><td> Opis zadania </td> 
+         <td>  <input  th:errorClass="error"  type="text" th:field="*{opis_zadania}"  name="opis_zadania" placeholder="Opis"/></td> 
+               <td>  <span class="error" th:if="${#fields.hasErrors('opis_zadania')}" th:errors="*{opis_zadania}"></span></td>
+            
+            </tr> 
+          <tr>    <td> Stawka </td> 
+            <td>  <input  th:errorClass="error"  type="text" th:field="*{stawka}"  name="stawka" placeholder="Stawka np. 1200"/> </td> 
+            <td>  <span class="error" th:if="${#fields.hasErrors('stawka')}" th:errors="*{stawka}"></span></td>
+            </tr> 
+            <tr>
+                <td></td>
+                <td colspan="2"> <button class="btn btn-success center-block" type="submit">Zapisz zadanie</button> </td> </tr>
+
+            </table>   
+    
+            
+     
+        </form>
+        
+        
+        
+ </div>
+    </div>
+     
+        <div th:include="layout :: footer"></div>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang= "pl" xmlns:th="http://www.thymeleaf.org">
+    <head th:include="layout :: head">
+        
+    </head>
+    <body>
+          <div class="bg">
+        <div th:include="layout :: navigationPanel"></div>
+
+  <div class="jumbotron">
+        <h1>Edycja </h1>
+
+        <form th:action="@{/save}" method="POST" th:object="${user}" >
+            <label>Login </label><br/>
+            <input  th:errorClass="error"  type="text"  th:field="*{login}"  name="login"/><br/>
+            <span class="error" th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></span><br/>
+            <label>Imie: </label><br/>
+            <input  th:errorClass="error"  type="text"  th:field="*{name}" name="name"/><br/>
+            <span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span><br/>
+            <label>Nazwisko </label><br/>
+            <input  th:errorClass="error"  type="text" th:field="*{surname}"  name="usrname"/> <br/>
+            <span class="error" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></span><br/>
+            <label>Haslo </label><br/>
+            <input  th:errorClass="error" type="text"  name="password"/> <br/>
+            <span class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span><br/>
+            <button type="submit">Edytuj</button> <br/>
+        </form>
+  </div>
+        
+          </div>
+        <div th:include="layout :: footer"></div>
+    </body>
+</html>

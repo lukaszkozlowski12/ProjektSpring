@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+    <head th:include="layout :: head">
+        
+      
+     
+            
+            
+       
+    </head>
+    <body>
+          <div class="bg">
+        <div th:include="layout :: navigationPanel"></div>
+        
+                        <div class="jumbotron">
+   <button class="button-64" role="button" th:each="authority: ${#authentication.getAuthorities()}"  th:if="${authority.getAuthority().equals('normalUser')}"><span class="text" th:text="${'Pensja: ' +stawka}" th:each="authority: ${#authentication.getAuthorities()}"  th:if="${authority.getAuthority().equals('normalUser')}"    >Button 64</span></button>
+    <button class="button-64" role="button" th:each="authority: ${#authentication.getAuthorities()}"  th:if="${authority.getAuthority().equals('adminUser')}" ><span class="text" th:text="${'Koszty: ' +stawkaall}" th:each="authority: ${#authentication.getAuthorities()}"  th:if="${authority.getAuthority().equals('adminUser')}"    >Button 64</span></button>     
+   <div class="text-center">
+            
+        <h1>Lista zadań      </h1>   
+         
+        <div class="table-responsive">
+          
+        <table class="table table-success table-striped center-block" th:if="${!#lists.isEmpty(zadania)}">
+            <tr>
+            <thead class="thead-light">
+                <th>ID</th>
+                <th>Login</th>
+                <th>Nazwa zadania</th>
+                <th>Opis zadania</th>
+                <th>Data</th>
+                 <th>Stawka</th>
+                 <th>Edytuj</th>
+                 <th>Usuń</th>
+        </thead>
+            </tr>    
+            <tr th:each="u: ${zadania}">
+                <td th:text="${u.zadanieId}"></td>
+                <td th:text="${u.login}"></td>
+                <td th:text="${u.nazwa_zadania}"></td>
+                <td th:text="${u.opis_zadania}"></td>
+                <td th:text="${u.data_dodania}"></td>
+                  <td th:text="${u.stawka}"></td>
+                  <td ><a th:href="@{/changeZd(id=${u.zadanieId})}"
+						class="btn btn-info btn-sm">
+						Edytuj 
+					</a> </td>
+                  <td ><a th:href="@{/deleteZadanie(id=${u.zadanieId})}"
+						class="btn btn-danger btn-sm">
+						Usuń
+					</a> </td>
+            </tr>
+        </table>
+   
+         </div>
+                </div>
+
+
+ <div class="border border-light p-3 mb-4">
+
+    <div class="text-center">
+            <a class="btn btn-primary center-block"  th:each="authority: ${#authentication.getAuthorities()}"  th:if="${authority.getAuthority().equals('adminUser')}"     th:href="@{/wyslijZadanie}">Wyślij zadanie </a>
+     <a class="btn btn-warning center-block"  th:href="@{/addZadanie}">Dodaj zadanie </a>
+    </div>
+
+  </div>
+        </div>
+     
+  
+          </div>
+        <div th:include="layout :: footer"></div>
+    </body>
+</html>

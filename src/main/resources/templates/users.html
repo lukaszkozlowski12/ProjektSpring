@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+    <head th:include="layout :: head">
+        
+         
+        
+    </head>
+    <body>
+          <div class="bg">
+        <div th:include="layout :: navigationPanel"></div>
+        
+        
+         <div class="jumbotron">
+        <h1>Użytkownicy</h1>
+        
+        <div class="card mask-custom">
+         <div class="card-body">
+                <div class="table-responsive">
+               
+        <table class="table table-borderless text-white mb-0" th:if="${!#lists.isEmpty(users)}">
+            <tr>
+                <th>ID</th>
+                <th>Imie</th>
+                <th>Nazwisko</th>
+                <th>Login</th>
+                <th>Hasło</th> 
+                
+                
+                <th th:each="authority: ${#authentication.getAuthorities()}"  th:if="${authority.getAuthority().equals('adminUser')}" >Usuwanie</th>
+                
+            </tr>
+            <tr th:each="u: ${users}">
+                <td th:text="${u.userid}"></td>
+                <td th:text="${u.name}"></td>
+                <td th:text="${u.surname}"></td>
+                <td th:text="${u.login}"></td>
+                <td th:text="${u.password}"></td>
+               <td th:each="authority: ${#authentication.getAuthorities()}"  th:if="${authority.getAuthority().equals('adminUser')}" ><a th:href="@{/deleteUser(id=${u.userid})}"
+						class="btn btn-danger btn-sm">
+						Usuń
+					</a> </td>
+            </tr>
+            
+                  
+        </table>
+                </div>
+         </div>
+        </div>
+
+    </div>
+          </div>
+   
+
+        <div th:include="layout :: footer"></div>
+    </body>
+</html>
